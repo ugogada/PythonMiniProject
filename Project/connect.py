@@ -26,4 +26,16 @@ class myconnect:
 
       def display(self):
             #7
+            eid = input("enter the emp id: ")
+            with self.con:
+                  dataEmp = self.con.execute(
+                        'select id,name,email,mobile_no,type,experience,salary from emp where id=:id',
+                        {'id': eid})
+                  l = dataEmp.fetchall()
+                  print "Name : " + l[0][1]
+                  print "Email : " + l[0][2]
+                  print "Mobile No. : " + l[0][3]
+                  print "Employee Type : " + l[0][4]
+                  print "Experience : ", l[0][5]
+                  print "Salary : ", l[0][6]
       
