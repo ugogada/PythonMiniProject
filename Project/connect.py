@@ -17,6 +17,12 @@ class myconnect:
                   
       def savetodb(self,ename,eemail,emob,etype,eexp,esalary):
             #6
+            with self.con:
+                  self.con.execute(
+                        "insert into emp(name,email,mobile_no,type,experience,salary) values(:name,:email,:mobile_no,:type,:experience,:salary)",
+                        {'name': ename, 'email': eemail, 'mobile_no': emob, 'type': etype, 'experience': eexp,
+                         'salary': esalary})
+            self.con.commit()
 
       def display(self):
             #7
